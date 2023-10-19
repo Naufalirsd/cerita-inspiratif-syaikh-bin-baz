@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+    <section id="biography">
+        <h2>Biografi Singkat</h2>
+        <p>
+            Syaikh Abdul Aziz bin Abdullah bin Baz adalah seorang ulama terkemuka dalam dunia Islam. Beliau lahir pada 21 November 1910 di Riyadh, Arab Saudi, dan tumbuh dalam lingkungan yang taat terhadap Islam. Ia menerima pendidikan awalnya di berbagai tempat dan belajar dari ulama-ulama terkemuka saat itu.
+        </p>
+        <p>
+            Syaikh Bin Baz memegang berbagai posisi penting dalam dunia Islam. Ia menjadi Mufti Agung Arab Saudi dan Kepala Komite Tetap Penelitian Ilmiah dan Fatwa. Selain itu, beliau dikenal sebagai pemberi fatwa yang sangat dihormati, dan fatwa-fatwanya sering dijadikan pedoman dalam masalah-masalah agama.
+        </p>
+        <p>
+            Selain itu, Syaikh Bin Baz adalah seorang pengarang produktif dan telah menulis banyak buku dan risalah tentang berbagai aspek agama Islam, termasuk tafsir, fiqih, aqidah, dan hadis. Pengajarannya dan pemikirannya memiliki pengaruh besar dalam dunia Islam.
+        </p>
+    </section>
+    
+    <section id="early-life">
+        <h2>Masa Muda dan Pendidikan</h2>
+        <p>
+            Syaikh Bin Baz dibesarkan dalam keluarga yang religius di Riyadh. Ia belajar di berbagai tempat, termasuk Institut Pendidikan Riyadh dan Universitas Al-Qaseem, di mana ia mendalami studi agama dan ilmu syariah.
+        </p>
+        <p>
+            Ia menghabiskan masa muda dan pendidikannya untuk memahami ajaran Islam dengan mendalam dan mengejar ilmu pengetahuan yang sangat luas.
+        </p>
+    </section>
+    
+    <section id="career">
+        <h2>Karir</h2>
+        <p>
+            Selama karirnya, Syaikh Bin Baz menduduki berbagai posisi penting, menjadi seorang pemberi fatwa yang dihormati, pengajar, dan penulis ulung. Ia memberikan kontribusi yang besar terhadap penyebaran pemahaman Islam yang sahih.
+        </p>
+        <p>
+            Di posisi Mufti Agung, beliau merilis ribuan fatwa yang berkaitan dengan berbagai aspek kehidupan, dari fiqih hingga aqidah, dan membantu orang-orang dalam memahami dan menjalankan ajaran Islam dengan benar.
+        </p>
+    </section>
+
+   <section id="">
+        <h2>Apa yang bisa kita ambil dari cerita Syaikh bin bazi</h2>
+        <p>
+           Pemanfaatan Teknologi untuk Pendidikan: Dalam era digital, teknologi informasi memiliki peran penting dalam pendidikan. Kita bisa mengambil inspirasi dari pendekatan Syaikh Bin Baz terhadap ilmu pengetahuan dan pendidikan. Meskipun beliau adalah seorang ulama tradisional, beliau mendorong penggunaan teknologi untuk menyebarkan ilmu agama, termasuk penerbitan buku dan literatur Islami.
+
+            Keteladanan dan Kepemimpinan: Syaikh Bin Baz adalah seorang figur otoritatif yang memberikan pandangan dalam hal aqidah, fatwa, dan ajaran Islam. Dalam IT, pemimpin juga sangat penting. Kita dapat belajar dari bagaimana Syaikh Bin Baz menjadi pemimpin dalam bidangnya dan menjadi panutan bagi banyak orang.
+        </p>
+        
+    </section>
+
+     <section id="comments">
+        <h2>Komentar</h2>
+        <div id="comment-list">
+            <!-- Komentar-komentar akan ditampilkan di sini -->
+        </div>
+        <form id="comment-form">
+            <input type="text" id="nama" placeholder="Nama" required>
+            <textarea id="komentar" placeholder="Tulis komentar Anda" required></textarea>
+            <button type="button" id="kirim-komentar">Kirim Komentar</button>
+        </form>
+    </section>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const commentForm = document.getElementById("comment-form");
+    const commentList = document.getElementById("comment-list");
+
+    commentForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const nama = document.getElementById("nama").value;
+        const komentar = document.getElementById("komentar").value;
+
+        if (nama && komentar) {
+            // Buat elemen div untuk komentar
+            const commentElement = document.createElement("div");
+            commentElement.className = "comment";
+
+            // Tambahkan konten komentar
+            commentElement.innerHTML = `<strong>${nama}:</strong><p>${komentar}</p>`;
+
+            // Tambahkan komentar ke daftar komentar
+            commentList.appendChild(commentElement);
+
+            // Bersihkan formulir
+            document.getElementById("nama").value = "";
+            document.getElementById("komentar").value = "";
+        }
+    });
+});
+</script>
+
+</main>
+</body>
+</html>
