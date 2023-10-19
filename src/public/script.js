@@ -1,22 +1,37 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient;
-const app = express();
-const port = 3000;
+// Fungsi untuk menampilkan daftar komentar dari Local Storage saat halaman dimuat
+function loadComments() {
+    var commentsList = document.getElementById("comments-list");
+    commentsList.innerHTML = ""; // Kosongkan daftar komentar
 
-const url = "mongodb://localhost:27017"; // Ganti dengan URL database Anda
-const dbName = "biografi-syaikh-bin-baz";
+    var comments = JSON.parse(localStorage.getItem("comments")) || [];
 
-app.use(bodyParser.json());
-app.use(express.static("public"));
+    for (var i = 0; i < comments.length; i++) {
+        var commentDiv = document.createElement("div");
+        commentDiv.className = "comment";
+        commentDiv.innerHTML =
+            "<strong>" + comments[i].name + ":</strong> " + comments[i].comment;
+        commentsList.appendChild(commentDiv);
+    }
+}
 
-// Kode untuk mengambil dan menyimpan komentar ke database disini
+// Fungsi untuk mengirim komentar
+function submitComment() {
+    // Dapatkan nilai nama dan komentar dari formulir
+    var name = document.getElementById("name").value;
+    var comment = document.getElementById("comment").value;
 
-app.post("/komentar", (req, res) => {
-    // Tangani pengiriman komentar ke database di sini
-    res.status(200).send("Komentar berhasil disimpan");
-});
+    // Tambahkan komentar ke daftar komentar di Local Storage
+    var comments = JSON.parse(localStorage.getItem("comments")) || [];
+    comments.push({ name, comment });
+    localStorage.setItem("comments", JSON.stringify(comments));
 
-app.listen(port, () => {
-    console.log(`Server berjalan di http://localhost:${port}`);
-});
+    // Tampilkan ulang daftar komentar
+    loadComments();
+
+    // Reset formulir
+    document.getElementById("name").value = "";
+    document.getElementById("comment").value = "";
+}
+
+// Memuat daftar komentar saat halaman dimuat
+loadComments();

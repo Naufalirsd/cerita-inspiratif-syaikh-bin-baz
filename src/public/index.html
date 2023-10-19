@@ -42,7 +42,7 @@
     </section>
 
    <section id="">
-        <h2>Apa yang bisa kita ambil dari cerita Syaikh bin bazi</h2>
+        <h2>Apa yang bisa kita ambil dari cerita Syaikh bin baz</h2>
         <p>
            Pemanfaatan Teknologi untuk Pendidikan: Dalam era digital, teknologi informasi memiliki peran penting dalam pendidikan. Kita bisa mengambil inspirasi dari pendekatan Syaikh Bin Baz terhadap ilmu pengetahuan dan pendidikan. Meskipun beliau adalah seorang ulama tradisional, beliau mendorong penggunaan teknologi untuk menyebarkan ilmu agama, termasuk penerbitan buku dan literatur Islami.
 
@@ -51,48 +51,24 @@
         
     </section>
 
-     <section id="comments">
-        <h2>Komentar</h2>
-        <div id="comment-list">
-            <!-- Komentar-komentar akan ditampilkan di sini -->
-        </div>
+     <div class="comment-section">
+        <h3>Komentar</h3>
         <form id="comment-form">
-            <input type="text" id="nama" placeholder="Nama" required>
-            <textarea id="komentar" placeholder="Tulis komentar Anda" required></textarea>
-            <button type="button" id="kirim-komentar">Kirim Komentar</button>
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="comment">Komentar:</label>
+            <textarea id="comment" name="comment" rows="4" required></textarea>
+
+            <button type="submit" onclick="submitComment()">Kirim Komentar</button>
         </form>
-    </section>
 
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const commentForm = document.getElementById("comment-form");
-    const commentList = document.getElementById("comment-list");
-
-    commentForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const nama = document.getElementById("nama").value;
-        const komentar = document.getElementById("komentar").value;
-
-        if (nama && komentar) {
-            // Buat elemen div untuk komentar
-            const commentElement = document.createElement("div");
-            commentElement.className = "comment";
-
-            // Tambahkan konten komentar
-            commentElement.innerHTML = `<strong>${nama}:</strong><p>${komentar}</p>`;
-
-            // Tambahkan komentar ke daftar komentar
-            commentList.appendChild(commentElement);
-
-            // Bersihkan formulir
-            document.getElementById("nama").value = "";
-            document.getElementById("komentar").value = "";
-        }
-    });
-});
-</script>
-
+        <div class="comments" id="comments-list">
+            <!-- Tempat untuk menampilkan daftar komentar -->
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
 </main>
 </body>
 </html>

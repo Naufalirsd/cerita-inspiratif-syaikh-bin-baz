@@ -1,19 +1,28 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
-const url = "mongodb+srv://ppqita:santri@ppqitadb.9ybiiar.mongodb.net/"; 
-const dbName = "biografi-syaikh-bin-baz";
+// Menyimpan komentar dalam array sementara
+const comments = [];
 
-app.use(bodyParser.json());
 app.use(express.static("src/public"));
+app.use(express.json());
 
-// Kode untuk mengambil dan menyimpan komentar ke database disini
+// Endpoint API untuk mengirim komentar
+app.post("/api/comments", (req, res) => {
+    const comment = req.body;
+    comments.push(comment);
 
-app.post("/komentar", (req, res) => {
-    // Tangani pengiriman komentar ke database di sini
-    res.status(200).send("Komentar berhasil disimpan");
+    // Kirim pesan sebagai respons
+    res.send("Komentar berhasil disimpan");
+
+    // Alternatif: Anda juga dapat mengirim pesan sebagai JSON
+    // res.json({ message: 'Komentar berhasil disimpan' });
+});
+
+// Endpoint API untuk mengambil daftar komentar
+app.get("/api/comments", (req, res) => {
+    res.json(comments);
 });
 
 app.listen(port, () => {
